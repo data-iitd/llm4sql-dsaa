@@ -1,0 +1,40 @@
+SELECT Country FROM AIRLINES WHERE Airline  =  "JetBlue Airways"
+SELECT Country FROM airlines WHERE Airline = 'Jetblue Airways'
+SELECT Abbreviation FROM AIRLINES WHERE Airline  =  "JetBlue Airways"
+SELECT Abbreviation FROM airlines WHERE Airline = 'Jetblue Airways'
+select name from teacher where hometown != "little lever urban district"
+SELECT Name FROM teacher WHERE Hometown != 'Little Lever Urban District'
+select name from teacher where hometown != "little lever urban district"
+SELECT Name FROM teacher WHERE Hometown != 'Little Lever Urban District'
+SELECT min(loser_rank) FROM matches
+SELECT MAX(loser_rank) FROM matches
+SELECT count(DISTINCT degree_summary_name) FROM Degree_Programs
+SELECT COUNT(DISTINCT degree_program_id) FROM Degree_Programs
+SELECT count(DISTINCT current_address_id) FROM Students
+SELECT DISTINCT * FROM Addresses WHERE address_id IN (SELECT current_address_id FROM Students) OR address_id IN (SELECT permanent_address_id FROM Students)
+SELECT other_student_details FROM Students ORDER BY other_student_details DESC
+SELECT * FROM Students ORDER BY first_name DESC, middle_name DESC, last_name DESC
+SELECT other_student_details FROM Students ORDER BY other_student_details DESC
+SELECT other_student_details FROM Students ORDER BY last_name DESC
+SELECT Episode FROM TV_series ORDER BY rating
+SELECT Episode FROM TV_series ORDER BY Rating DESC
+SELECT Episode FROM TV_series ORDER BY rating
+SELECT Episode FROM TV_series ORDER BY Rating DESC
+SELECT id FROM tv_channel GROUP BY country HAVING count(*)  >  2
+SELECT id FROM TV_Channel WHERE Country IN (SELECT Country FROM TV_Channel GROUP BY Country HAVING count(*) > 2)
+SELECT id FROM tv_channel GROUP BY country HAVING count(*)  >  2
+SELECT T1.id FROM TV_Channel AS T1 JOIN TV_series AS T2 ON T1.id = T2.Channel GROUP BY T1.id HAVING count(*) > 2
+SELECT count(*) FROM area_code_state
+SELECT COUNT(DISTINCT state) FROM AREA_CODE_STATE
+SELECT count(*) FROM country WHERE GovernmentForm  =  "Republic"
+SELECT COUNT(*) FROM country WHERE GovernmentForm LIKE '%republic%'
+SELECT count(*) FROM country WHERE GovernmentForm  =  "Republic"
+SELECT COUNT(*) FROM country WHERE GovernmentForm LIKE '%republic%'
+SELECT COUNT(*) FROM (SELECT T1.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T2.Language  =  "English" INTERSECT SELECT T1.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T2.Language  =  "Dutch")
+SELECT COUNT(DISTINCT CountryCode) FROM countrylanguage WHERE Language = 'English' OR Language = 'Dutch'
+SELECT grade FROM Highschooler
+SELECT DISTINCT grade FROM Highschooler
+SELECT grade FROM Highschooler
+SELECT ID, name, grade FROM Highschooler
+SELECT Name FROM singer WHERE Citizenship != "France"
+SELECT Name FROM singer WHERE Citizenship != 'French'

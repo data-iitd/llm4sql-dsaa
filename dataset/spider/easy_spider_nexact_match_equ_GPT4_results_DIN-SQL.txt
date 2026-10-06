@@ -1,0 +1,76 @@
+select distinct year from cars_data where weight between 3000 and 4000;
+SELECT DISTINCT Year FROM cars_data WHERE Weight < 4000 INTERSECT SELECT DISTINCT Year FROM cars_data WHERE Weight > 3000
+SELECT FlightNo FROM FLIGHTS WHERE SourceAirport  =  "APG"
+SELECT FlightNo FROM flights AS T1 JOIN airports AS T2 ON T1.SourceAirport = T2.AirportCode WHERE T2.AirportCode = 'APG'
+SELECT FlightNo FROM FLIGHTS WHERE DestAirport  =  "APG"
+SELECT FlightNo FROM flights AS T1 JOIN airports AS T2 ON T1.DestAirport = T2.AirportCode WHERE T2.AirportCode = 'APG'
+SELECT name FROM employee ORDER BY age
+SELECT Name FROM employee ORDER BY Age ASC
+SELECT name FROM employee ORDER BY age
+SELECT Name FROM employee ORDER BY Age ASC
+SELECT count(DISTINCT template_id) FROM Documents
+SELECT count(DISTINCT T1.Template_ID) FROM Templates AS T1 JOIN Documents AS T2 ON T1.Template_ID = T2.Template_ID
+SELECT template_id FROM Documents GROUP BY template_id HAVING count(*)  >  1
+SELECT T1.Template_ID FROM Templates AS T1 JOIN Documents AS T2 ON T1.Template_ID = T2.Template_ID GROUP BY T1.Template_ID HAVING count(T2.Document_ID) > 1
+SELECT template_id FROM Documents GROUP BY template_id HAVING count(*)  >  1
+SELECT T1.Template_ID FROM Templates AS T1 JOIN Documents AS T2 ON T1.Template_ID = T2.Template_ID GROUP BY T1.Template_ID HAVING count(*) > 1
+SELECT DISTINCT template_type_code FROM Templates
+SELECT DISTINCT Template_Type_Code FROM Ref_Template_Types
+SELECT count(*) FROM Templates WHERE template_type_code  =  "CV"
+SELECT count(*) FROM Templates AS T1 JOIN Ref_Template_Types AS T2 ON T1.Template_Type_Code = T2.Template_Type_Code WHERE T2.Template_Type_Description = 'CV'
+SELECT template_type_code FROM Templates GROUP BY template_type_code HAVING count(*)  <  3
+SELECT T1.Template_Type_Code FROM Ref_Template_Types AS T1 JOIN Templates AS T2 ON T1.Template_Type_Code = T2.Template_Type_Code GROUP BY T1.Template_Type_Code HAVING COUNT(T2.Template_ID) < 3
+SELECT template_type_code FROM Templates GROUP BY template_type_code HAVING count(*)  <  3
+SELECT T1.Template_Type_Code FROM Ref_Template_Types AS T1 JOIN Templates AS T2 ON T1.Template_Type_Code = T2.Template_Type_Code GROUP BY T1.Template_Type_Code HAVING count(T2.Template_ID) < 3
+SELECT document_id FROM Paragraphs GROUP BY document_id HAVING count(*)  >=  2
+SELECT T1.Document_ID FROM Documents AS T1 JOIN Paragraphs AS T2 ON T1.Document_ID  =  T2.Document_ID GROUP BY T1.Document_ID HAVING count(*)  >=  2
+SELECT document_id FROM Paragraphs GROUP BY document_id HAVING count(*)  >=  2
+SELECT T1.Document_ID FROM Documents AS T1 JOIN Paragraphs AS T2 ON T1.Document_ID = T2.Document_ID GROUP BY T1.Document_ID HAVING count(*) >= 2
+SELECT document_id FROM Paragraphs GROUP BY document_id HAVING count(*) BETWEEN 1 AND 2
+SELECT T1.Document_ID FROM Documents AS T1 JOIN Paragraphs AS T2 ON T1.Document_ID = T2.Document_ID GROUP BY T1.Document_ID HAVING count(T2.Paragraph_ID) BETWEEN 1 AND 2
+SELECT document_id FROM Paragraphs GROUP BY document_id HAVING count(*) BETWEEN 1 AND 2
+SELECT T1.Document_ID FROM Documents AS T1 JOIN Paragraphs AS T2 ON T1.Document_ID = T2.Document_ID GROUP BY T1.Document_ID HAVING count(T2.Paragraph_ID) BETWEEN 1 AND 2
+SELECT Hometown FROM teacher GROUP BY Hometown HAVING COUNT(*)  >=  2
+SELECT Hometown FROM teacher GROUP BY Hometown HAVING count(*) > 1
+SELECT Hometown FROM teacher GROUP BY Hometown HAVING COUNT(*)  >=  2
+SELECT Hometown FROM teacher GROUP BY Hometown HAVING count(Teacher_ID) >= 2
+SELECT tourney_name FROM matches GROUP BY tourney_name HAVING count(*)  >  10
+SELECT tourney_name FROM matches GROUP BY tourney_name HAVING count(match_num) > 10
+SELECT tourney_name FROM matches GROUP BY tourney_name HAVING count(*)  >  10
+SELECT tourney_name FROM matches GROUP BY tourney_name HAVING count(match_num) > 10
+SELECT country_code FROM players GROUP BY country_code HAVING count(*)  >  50
+SELECT country_code FROM players GROUP BY country_code HAVING count(player_id) > 50
+SELECT country_code FROM players GROUP BY country_code HAVING count(*)  >  50
+SELECT country_code FROM players GROUP BY country_code HAVING count(player_id) > 50
+SELECT course_description FROM Courses WHERE course_name  =  'math'
+SELECT course_description FROM Courses WHERE course_name LIKE '%math%'
+SELECT DISTINCT T1.course_name FROM Courses AS T1 JOIN Student_Enrolment_Courses AS T2 ON T1.course_id  =  T2.course_id
+SELECT DISTINCT course_name FROM Courses AS T1 JOIN Student_Enrolment_Courses AS T2 ON T1.course_id = T2.course_id
+SELECT DISTINCT T1.course_name FROM Courses AS T1 JOIN Student_Enrolment_Courses AS T2 ON T1.course_id  =  T2.course_id
+SELECT DISTINCT course_name FROM Courses AS T1 JOIN Student_Enrolment_Courses AS T2 ON T1.course_id = T2.course_id
+SELECT first_name FROM Students WHERE current_address_id != permanent_address_id
+SELECT first_name FROM Students WHERE permanent_address_id != current_address_id
+SELECT first_name FROM Students WHERE current_address_id != permanent_address_id
+SELECT first_name FROM Students WHERE permanent_address_id != current_address_id
+SELECT count(DISTINCT current_address_id) FROM Students
+SELECT count(DISTINCT T1.address_id) FROM Addresses AS T1 JOIN Students AS T2 ON T1.address_id = T2.current_address_id
+SELECT Title FROM Cartoon ORDER BY title
+SELECT Title FROM Cartoon ORDER BY Title ASC
+SELECT Title FROM Cartoon ORDER BY title
+SELECT Title FROM Cartoon ORDER BY Title ASC
+SELECT Nationality FROM people GROUP BY Nationality HAVING COUNT(*)  >=  2
+SELECT Nationality FROM people GROUP BY Nationality HAVING count(*) > 1
+SELECT COUNT(*) FROM (SELECT T1.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T2.Language  =  "English" INTERSECT SELECT T1.Name FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code  =  T2.CountryCode WHERE T2.Language  =  "Dutch")
+SELECT COUNT(*) FROM (SELECT CountryCode FROM countrylanguage WHERE Language = 'English' INTERSECT SELECT CountryCode FROM countrylanguage WHERE Language = 'Dutch') AS T1
+SELECT Name FROM conductor ORDER BY Age ASC
+SELECT Name FROM conductor ORDER BY Age
+SELECT grade FROM Highschooler GROUP BY grade HAVING count(*)  >=  4
+SELECT grade FROM Highschooler GROUP BY grade HAVING COUNT(ID) >= 4
+SELECT grade FROM Highschooler GROUP BY grade HAVING count(*)  >=  4
+SELECT grade FROM Highschooler GROUP BY grade HAVING count(ID) >= 4
+SELECT count(DISTINCT dog_id) FROM Treatments
+SELECT count(DISTINCT T1.dog_id) FROM Dogs AS T1 JOIN Treatments AS T2 ON T1.dog_id = T2.dog_id
+SELECT count(DISTINCT professional_id) FROM Treatments
+SELECT count(DISTINCT T1.professional_id) FROM Professionals AS T1 JOIN Treatments AS T2 ON T1.professional_id = T2.professional_id
+SELECT count(DISTINCT professional_id) FROM Treatments
+SELECT count(DISTINCT T1.professional_id) FROM Professionals AS T1 JOIN Treatments AS T2 ON T1.professional_id = T2.professional_id
