@@ -1,0 +1,10 @@
+### Task
+Given the database schema and two SQL queries, SQL_1 and SQL_2, determine if SQL_1 and SQL_2 are "Equivalent" or "Non Equivalent". Two SQL queries are "Equivalent" if both queries produce the same result when executed on the given database schema.
+
+### Database Schema
+The query will run on a database with the following schema:
+Table Batting, columns = [ *, palyerID, yearID, stint, teamID, CS]
+Table People, columns = [ *, playerID, nameFirst, nameLast]
+
+Primary_keys = [People.playerID]
+Foreign_keys = [People.playerID = Batting.playerID]

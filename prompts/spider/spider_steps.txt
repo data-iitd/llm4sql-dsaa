@@ -1,0 +1,5 @@
+### Steps
+Let's think step by step as follows:
+Step 1: Explain in brief each of the two queries, SQL_1 and SQL_2.
+Step 2: Based on the explanation, determine whether SQL_1 and SQL_2 are "Equivalent" or "Non Equivalent".
+Step 3: Provide the analysis and reasoning for the conclusion.

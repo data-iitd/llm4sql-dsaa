@@ -1,0 +1,6 @@
+### Task
+You are given a database schema, two SQL queries, i.e., SQL_1 and SQL_2, and three descriptions to find whether the given two queries are "Equivalent" or "Non Equivalent". 
+Your task is to find the best suited description for finding the equivalence. Choose any one of the following options ["Explanation 1", "Explanation 2", "Explanation 3"]
+
+### Database Schema
+The query will run on a database with the following schema:

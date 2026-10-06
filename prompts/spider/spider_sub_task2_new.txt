@@ -1,0 +1,8 @@
+### Task
+Given the database schema and an SQL query, i.e., SQL_2, briefly describe about the query in following steps.
+Step 1: Count the number of selected columns. 
+Step 2: Find constraints for each column.
+Step 3: Explain the overall working of the SQL_2.
+
+### Database Schema
+The query will run on a database with the following schema:

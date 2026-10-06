@@ -1,0 +1,10 @@
+### Task
+Given the database schema and an SQL query, i.e., SQL_1, briefly describe how it works.
+
+### Database Schema
+The query will run on a database with the following schema:
+Table Batting, columns = [ *, palyerID, yearID, stint, teamID, h2b, h3b, hr]
+Table People, columns = [ *, playerID, nameFirst, nameLast]
+
+Primary_keys = [People.playerID]
+Foreign_keys = [People.playerID = Batting.playerID]

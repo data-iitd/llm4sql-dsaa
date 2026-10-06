@@ -1,0 +1,5 @@
+### Task
+You are given a text and you have to determine whether the given text is concluding to "Equivalent", "Non Equivalent", or "Unknown".
+Choose one of the following options ["Equivalent", "Non Equivalent", or "Unknown"]
+
+### Text

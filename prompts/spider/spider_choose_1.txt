@@ -1,0 +1,6 @@
+### Task
+You are given a database schema, an SQL query, i.e., SQL_1, and few descriptions about the query. Your task is to find the best suited description for the given SQL query. 
+Choose any one of the following options ["Explanation 1", "Explanation 2", "Explanation 3"]
+
+### Database Schema
+The query will run on a database with the following schema:

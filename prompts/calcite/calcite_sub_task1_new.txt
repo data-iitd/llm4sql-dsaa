@@ -1,0 +1,13 @@
+### Task
+Given the database schema and an SQL query, i.e., SQL_1, briefly describe about the query in following steps.
+Step 1: Count the number of selected columns. 
+Step 2: Find contraints for each columns.
+Step 3: Explain the overall working of the SQL_1.
+
+### Database Schema
+The query will run on a database with the following schema:
+Table DEPT, columns = [*, DEPTNO, NAME]
+Table EMP, columns = [*, EMPNO, ENAME, JOB, MGR, SAL, COMM, HIREDATE, DEPTNO, SLACKER, MANAGER]
+Table SDEPT, columns = [*, DEPTNO, NAME]
+
+Foreign_keys = [DEPT.DEPTNO = EMP.DEPTNO, SDEPT.DEPTNO = EMP.DEPTNO]
