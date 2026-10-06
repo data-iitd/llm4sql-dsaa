@@ -1,0 +1,20 @@
+[DEFAULT]
+debug = True
+
+[PATH]
+prompt_path = /home/srajat/LLM/final_submission_code/prompts/calcite/
+dataset_path = /home/srajat/LLM/final_submission_code/dataset/calcite/
+samples_path = /home/srajat/LLM/final_submission_code/samples/calcite/
+llm_path = /home/srajat/LLM/Models/
+
+[FILE]
+prompt_count = 6
+prompt_file_1 = calcite_task1_method3.txt
+prompt_file_2 = calcite_sql.txt
+prompt_file_3 = calcite_answer.txt
+prompt_file_4 = calcite_task2.txt
+prompt_file_5 = calcite_sub_task1.txt
+prompt_file_6 = calcite_sub_task2.txt
+sampling_file = samples.txt
+llm_name = codellama_7b_instruct_hf
+sql_dataset = calcite_sqls_cosette
