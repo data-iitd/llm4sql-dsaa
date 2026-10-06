@@ -1,0 +1,21 @@
+[DEFAULT]
+debug = True
+
+[PATH]
+prompt_path = /home/srajat/LLM/final_submission_code/prompts/spider/
+dataset_path = /home/srajat/LLM/final_submission_code/dataset/spider/without_double_quotes/GPT4_results_DIN-SQL/partitioned/
+samples_path = /home/srajat/LLM/final_submission_code/samples/spider/
+
+[FILE]
+prompt_count = 6
+prompt_file_1 = gpt.txt
+prompt_file_2 = spider_task1.txt
+prompt_file_3 = spider_sql.txt
+prompt_file_4 = spider_steps.txt
+prompt_file_5 = spider_answer.txt
+prompt_file_6 = spider_task2.txt
+sql_dataset = ehard_spider_nexact_match_non_equ_GPT4_results_DIN-SQL.txt
+db_id = ehard_spider_nexact_match_non_equ_id_GPT4_results_DIN-SQL.txt
+dataset_schema = tables.json
+llm_name = gpt-4-0125-preview
+sampling_file = sample_ehard_nexact_match_non_equ.txt

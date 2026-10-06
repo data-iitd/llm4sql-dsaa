@@ -1,0 +1,22 @@
+[DEFAULT]
+debug = True
+
+[PATH]
+context_prompt_path = /home/srajat/LLM/final_submission_code/context_prompts/spider/
+prompt_path = /home/srajat/LLM/final_submission_code/prompts/spider/
+dataset_path = /home/srajat/LLM/final_submission_code/dataset/spider/without_double_quotes/GPT4_results_DIN-SQL/
+llm_path = /home/srajat/LLM/Models/
+samples_path = /home/srajat/LLM/final_submission_code/samples/spider/
+
+[FILE]
+prompt_count = 4
+prompt_file_1 = spider_task1.txt
+prompt_file_2 = spider_sql.txt
+prompt_file_3 = spider_answer.txt
+prompt_file_4 = spider_task2.txt
+context_prompt_file = in_context_bard.txt
+llm_name = codellama_7b_instruct_hf
+sql_dataset = spider_exact_match_GPT4_results_DIN-SQL.txt
+db_id = spider_exact_match_id_GPT4_results_DIN-SQL.txt
+dataset_schema = tables.json
+sampling_file = samples.txt
