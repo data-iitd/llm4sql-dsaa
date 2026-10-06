@@ -1,0 +1,20 @@
+[DEFAULT]
+debug = True
+
+[PATH]
+prompt_path = /home/rajat/final_submission_code/prompts/our/
+dataset_path = /home/rajat/final_submission_code/dataset/our_dataset/
+samples_path = /home/rajat/final_submission_code/samples/our/
+
+[FILE]
+prompt_count = 7
+prompt_file_1 = gpt.txt
+prompt_file_2 = our_task1_q24_method3.txt
+prompt_file_3 = our_sql.txt
+prompt_file_4 = our_answer.txt
+prompt_file_5 = our_task2.txt
+prompt_file_6 = our_sub_task1_q24.txt
+prompt_file_7 = our_sub_task2_q24.txt
+llm_name = gpt-4-0125-preview
+sql_dataset = question_24_equivalent.txt
+sampling_file = samples_5_non_equ.txt

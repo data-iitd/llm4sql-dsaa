@@ -1,0 +1,20 @@
+[DEFAULT]
+debug = True
+
+[PATH]
+prompt_path = /home/rajat/final_submission_code/prompts/our/
+dataset_path = /home/rajat/final_submission_code/dataset/our_dataset/
+llm_path = /DATATWO/users/rajat/LLMs/codellama/
+samples_path = /home/rajat/final_submission_code/samples/our/
+
+[FILE]
+prompt_count = 6
+prompt_file_1 = our_task1_q24_method3.txt
+prompt_file_2 = our_sql.txt
+prompt_file_3 = our_answer.txt
+prompt_file_4 = our_task2.txt
+prompt_file_5 = our_sub_task1_q24.txt
+prompt_file_6 = our_sub_task2_q24.txt
+llm_name = codellama_13b_instruct_hf
+sql_dataset = question_24_equivalent.txt
+sampling_file = samples_5_non_equ.txt
