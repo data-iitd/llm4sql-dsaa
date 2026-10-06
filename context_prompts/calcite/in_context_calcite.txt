@@ -1,0 +1,108 @@
+### Example 1
+### Task
+Given the database schema and two SQL queries, SQL_1 and SQL_2, determine if SQL_1 and SQL_2 are "Equivalent" or "Non Equivalent". Two SQL queries are "Equivalent" if both queries produce the same result when executed on the given database schema.
+
+### Database Schema
+The query will run on a database with the following schema:
+Table matches, columns = [ *, best_of, draw_size, loser_age, loser_entry, loser_hand, loser_ht, loser_id, loser_ioc, loser_name, loser_rank, loser_rank_points, loser_seed, match_num, minutes, round, score, surface, tourney_date, tourney_id, tourney_level, tourney_name, winner_age, winner_entry, winner_hand, winner_ht, winner_id, winner_ioc, winner_name, winner_rank, winner_rank_points, winner_seed, year ]
+Table players, columns = [ *, player_id, first_name, last_name, hand, birth_date, country_code ]
+Table rankings, columns = [ *, ranking_date, ranking, player_id, ranking_points, tours ]
+
+Foreign_keys = [ matches.winner_id = players.player_id, matches.loser_id = players.player_id, rankings.player_id = players.player_id ]
+Primary_keys = [ players.player_id ]
+
+### SQL
+[SQL_1] SELECT winner_name FROM matches WHERE tourney_name  =  'Australian Open' ORDER BY winner_rank_points DESC LIMIT 1;
+[SQL_2] SELECT T1.first_name, T1.last_name FROM players AS T1 JOIN rankings AS T2 ON T1.player_id = T2.player_id JOIN matches AS T3 ON T1.player_id = T3.winner_id WHERE T3.tourney_name = 'Australian Open' ORDER BY T2.rank_points DESC LIMIT 1;
+
+### Answer
+To determine if SQL_1 and SQL_2 are "Equivalent" or "Non Equivalent", let's analyze the purpose and output of each query.
+
+**SQL_1:**
+- This query selects the name of the winner from the `matches` table for matches that took place at the 'Australian Open'.
+- It orders the results by the winner's rank points in descending order.
+- It limits the output to the top result, essentially giving us the name of the winner with the highest rank points from the 'Australian Open'.
+
+**SQL_2:**
+- This query joins three tables: `players`, `rankings`, and `matches`.
+- It selects the first name and last name of the player from the `players` table.
+- The join conditions ensure that we're looking at players who have won matches at the 'Australian Open' and have a ranking.
+- The results are ordered by the rank points (note: there's a typo in the query, it should be `T2.ranking_points` instead of `T2.rank_points`) in descending order.
+- It limits the output to the top result, which would be the player with the highest rank points who won a match at the 'Australian Open'.
+
+**Analysis:**
+- Both queries aim to find the player with the highest ranking points who won at the 'Australian Open'.
+- SQL_1 directly queries the `matches` table and orders by `winner_rank_points`, assuming this column directly reflects the ranking points of the winner at the time of the match.
+- SQL_2 takes a more comprehensive approach by joining the `players` and `rankings` tables to the `matches` table, potentially offering a more accurate reflection of the player's ranking points from the `rankings` table.
+
+**Conclusion:**
+- The queries are intended to be "Equivalent" in their purpose, which is to find the player with the highest ranking points who won at the 'Australian Open'.
+- However, there's a discrepancy in the output format: SQL_1 outputs a single column (`winner_name`), while SQL_2 outputs two columns (`first_name`, `last_name`).
+- Additionally, the accuracy of SQL_1's results depends on whether `winner_rank_points` in the `matches` table accurately reflects the current ranking points from the `rankings` table. If `winner_rank_points` is always up-to-date and matches the `ranking_points` from the `rankings` table, the queries could be considered functionally equivalent in terms of the information they aim to retrieve. However, if there's any discrepancy in how `winner_rank_points` is updated or if it doesn't match the `ranking_points` from the `rankings` table, SQL_2 would likely provide more accurate results due to directly using the `ranking_points` from the `rankings` table.
+
+**Final Verdict:** "Non Equivalent" due to differences in output format and potential differences in data accuracy.
+
+### Example 2
+### Task
+Given the database schema and two SQL queries, SQL_1 and SQL_2, determine if SQL_1 and SQL_2 are "Equivalent" or "Non Equivalent". Two SQL queries are "Equivalent" if both queries produce the same result when executed on the given database schema.
+
+### Database Schema
+The query will run on a database with the following schema:
+Table city, columns = [ *, ID, Name, CountryCode, District, Population ]
+Table country, columns = [ *, Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2 ]
+Table countrylanguage, columns = [ *, CountryCode, Language, IsOfficial, Percentage ]
+Table sqlite_sequence, columns = [ *, name, seq ]
+
+Foreign_keys = [ city.CountryCode = country.Code, countrylanguage.CountryCode = country.Code ]
+Primary_keys = [ city.ID, country.Code, countrylanguage.CountryCode ]
+
+### SQL
+[SQL_1] SELECT avg(GNP) ,  sum(population) FROM country WHERE GovernmentForm  =  "US Territory";
+[SQL_2] SELECT AVG(GNP), SUM(Population) FROM country WHERE GovernmentForm = 'US territory';
+
+### Answer
+The reason for this is the difference in the case sensitivity of the value used in the WHERE clause for filtering the `GovernmentForm` column. SQL_1 uses `"US Territory"` while SQL_2 uses `'US territory'` (note the lowercase 't' in 'territory'). SQL is case-sensitive when comparing string values. Therefore, unless the database is configured to ignore case differences in string comparisons, these two queries will potentially return different results based on the case sensitivity of the data in the `GovernmentForm` column.
+
+If the database treats strings in a case-insensitive manner, then the queries could be considered equivalent. However, without explicit mention of such a configuration, the default assumption in SQL is case sensitivity in string comparisons, leading to the conclusion that these queries are "Non Equivalent".
+
+### Example 3
+### Task
+Given the database schema and two SQL queries, SQL_1 and SQL_2, determine if SQL_1 and SQL_2 are "Equivalent" or "Non Equivalent". Two SQL queries are "Equivalent" if both queries produce the same result when executed on the given database schema.
+
+### Database Schema
+The query will run on a database with the following schema:
+Table airlines, columns = [ *, uid, Airline, Abbreviation, Country ]
+Table airports, columns = [ *, City, AirportCode, AirportName, Country, CountryAbbrev ]
+Table flights, columns = [ *, Airline, FlightNo, SourceAirport, DestAirport ]
+
+Foreign_keys = [ flights.DestAirport = airports.AirportCode, flights.SourceAirport = airports.AirportCode ]
+Primary_keys = [ airlines.uid, airports.AirportCode, flights.Airline ]
+
+### SQL
+[SQL_1] SELECT T1.Airline FROM AIRLINES AS T1 JOIN FLIGHTS AS T2 ON T1.uid  =  T2.Airline WHERE T2.DestAirport  =  "AHD";
+[SQL_2] SELECT DISTINCT airlines.Airline FROM flights JOIN airlines ON flights.Airline = airlines.uid WHERE flights.DestAirport = 'AHD';
+
+### Answer
+The two SQL queries provided are equivalent. Both queries retrieve the names of airlines that have flights going to the destination airport with the code "AHD". The only difference between the two queries is the use of table aliases and the DISTINCT keyword in SQL_2, but they essentially perform the same operation and produce the same result set.
+
+### Example 4
+### Task
+Given the database schema and two SQL queries, SQL_1 and SQL_2, determine if SQL_1 and SQL_2 are "Equivalent" or "Non Equivalent". Two SQL queries are "Equivalent" if both queries produce the same result when executed on the given database schema.
+
+### Database Schema
+The query will run on a database with the following schema:
+Table Cartoon, columns = [ *, id, Title, Directed_by, Written_by, Original_air_date, Production_code, Channel ]
+Table TV_Channel, columns = [ *, id, series_name, Country, Language, Content, Pixel_aspect_ratio_PAR, Hight_definition_TV, Pay_per_view_PPV, Package_Option ]
+Table TV_series, columns = [ *, id, Episode, Air_Date, Rating, Share, 18_49_Rating_Share, Viewers_m, Weekly_Rank, Channel ]
+
+Foreign_keys = [ TV_series.Channel = TV_Channel.id, Cartoon.Channel = TV_Channel.id ]
+Primary_keys = [ TV_Channel.id, TV_series.id, Cartoon.id ]
+
+### SQL
+[SQL_1] SELECT Country ,  count(*) FROM TV_Channel GROUP BY Country ORDER BY count(*) DESC LIMIT 1;
+[SQL_2] SELECT Country, COUNT(*) as num_channels FROM TV_Channel GROUP BY Country ORDER BY num_channels DESC LIMIT 1;
+
+### Answer
+The SQL queries SQL_1 and SQL_2 are "Equivalent" as they both retrieve the same information from the TV_Channel table. Both queries count the number of channels per country and then order the results in descending order based on the count, finally limiting the output to only the top result. The only difference is the alias used for the count in the SELECT clause, but that does not affect the result of the query.
+
+### Question
